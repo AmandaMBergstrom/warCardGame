@@ -1,0 +1,37 @@
+package warCardGame;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class Deck {
+
+	private List<Card> cards = new ArrayList<Card>();
+	
+		private String[] suits = {"Clubs", "Spades", "Diamonds", "Hearts"};
+	    private String[] names = {"2", "3","4","5","6","7","8", "9","10", "Jack", "Queen", "King", "Ace"};
+
+	    public Deck () {
+	    for (String suit : suits) {
+	    	for (int value = 2; value <= 14; value++) {
+	    		String cardName = names[value - 2] + " of " + suit;
+	    		Card card = new Card();
+	    		card.setValue(value);
+	    		card.setName(cardName);
+	    		cards.add(card);
+	    	}
+	    }
+	}
+	
+	public void shuffle() {
+		Collections.shuffle(cards);
+	}
+	
+	public Card draw() {
+		if (!cards.isEmpty()) {
+			return cards.remove(0);
+		} else {
+			return null;
+		}
+	}
+}
